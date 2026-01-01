@@ -7,9 +7,9 @@ const { className = "", title } = Astro.props;
 ---
 
 <AppLayout title={title}>
-    <div class="flex flex-col h-screen overflow-x-hidden bg-linear-to-br from-gray-50 via-blue-300/30 to-blue-500 dark:from-gray-900 dark:via-gray-900 dark:to-blue-950">
+    <div class="min-h-screen flex flex-col bg-linear-to-br from-gray-50 via-blue-300/30 to-blue-500 dark:from-gray-900 dark:via-gray-900 dark:to-blue-950">
         <Header />
-        <main class={`flex-1 overflow-y-auto main-scroll ${className}`}>
+        <main class={`flex-1 ${className}`}>
             <slot />
         </main>
         <Footer />
