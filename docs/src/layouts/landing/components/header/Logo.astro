@@ -1,0 +1,35 @@
+---
+import darkLogo from "@/assets/brand/dark-logo.webp";
+import lightLogo from "@/assets/brand/light-logo.webp";
+---
+<div class="flex items-center transition-opacity duration-300">
+	<a
+		href="/"
+		class="flex items-center space-x-3 transition-transform duration-200 group"
+	>
+		<div class="relative">
+			<img
+				src={darkLogo.src}
+				alt="DialCash"
+				class="h-20 w-30 transition-all duration-300 group-hover:brightness-110 hover:scale-105 object-contain dark:hidden"
+			/>
+			<img
+				src={lightLogo.src}
+				alt="DialCash"
+				class="h-20 w-30 transition-all duration-300 group-hover:brightness-110 hover:scale-105 object-contain hidden dark:block"
+			/>
+		</div>
+		<div class="md:flex flex-col hidden">
+			<span
+				class="font-bold text-2xl bg-linear-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent"
+			>
+				DialCash
+			</span>
+			<span
+				class="text-xs text-gray-500 dark:text-gray-400 font-medium tracking-wide"
+			>
+				Documentation
+			</span>
+		</div>
+	</a>
+</div>

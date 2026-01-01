@@ -1,0 +1,158 @@
+---
+import { Icon } from "astro-icon/components";
+import type { NavConfig } from "@/config";
+
+interface Props {
+    navConfig: NavConfig;
+}
+
+const { navConfig } = Astro.props;
+---
+
+<div
+    id="mobile-menu"
+    class="fixed top-20 left-0 right-0 bottom-0 z-40 lg:hidden bg-white dark:bg-gray-900 transform transition-transform duration-300 ease-out -translate-y-full"
+>
+    <div class="h-full overflow-y-auto main-scroll">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8">
+            <nav class="space-y-2">
+                <h3
+                    class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4 px-4"
+                >
+                    Navigation
+                </h3>
+                {
+                    navConfig.items.map((item, index) => (
+                        <a
+                            href={item.href}
+                            class="mobile-nav-link group flex items-center gap-4 px-4 py-4 rounded-xl transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300"
+                            style={`animation-delay: ${index * 50}ms`}
+                        >
+                            {item.icon && (
+                                <span class="text-3xl">{item.icon}</span>
+                            )}
+                            <div class="flex-1">
+                                <div class="text-lg font-semibold">
+                                    {item.label}
+                                </div>
+                                {item.description && (
+                                    <div class="text-sm text-gray-500 dark:text-gray-400">
+                                        {item.description}
+                                    </div>
+                                )}
+                            </div>
+                            <Icon
+                                name="right-arrow"
+                                class="w-5 h-5 text-gray-400 group-hover:translate-x-1 transition-transform"
+                            />
+                        </a>
+                    ))
+                }
+            </nav>
+            <div class="border-t border-gray-200 dark:border-gray-800"></div>
+            <div class="space-y-2">
+                <h3
+                    class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4 px-4"
+                >
+                    Community
+                </h3>
+                <a
+                    href="https://github.com/Diego17cp/dialcash"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-all duration-200 group"
+                >
+                    <div
+                        class="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg group-hover:bg-gray-200 dark:group-hover:bg-gray-700 transition-colors"
+                    >
+                        <Icon name="github" class="size-6" />
+                    </div>
+                    <div class="flex-1">
+                        <div class="text-lg font-semibold">
+                            GitHub Repository
+                        </div>
+                        <div class="text-sm text-gray-500 dark:text-gray-400">
+                            Star and contribute
+                        </div>
+                    </div>
+                    <Icon
+                        name="square-arrow"
+                        class="w-5 h-5 text-gray-400 group-hover:translate-x-1 transition-transform"
+                    />
+                </a>
+                <a
+                    href="https://github.com/Diego17cp/dialcash/issues/new"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-all duration-200 group"
+                >
+                    <div
+                        class="p-2 bg-red-100 dark:bg-red-900/30 rounded-lg group-hover:bg-red-200 dark:group-hover:bg-red-900/50 transition-colors"
+                    >
+                        <Icon
+                            name="bug"
+                            class="size-6 text-red-600 dark:text-red-400"
+                        />
+                    </div>
+                    <div class="flex-1">
+                        <div class="text-lg font-semibold">Report an Issue</div>
+                        <div class="text-sm text-gray-500 dark:text-gray-400">
+                            Help us improve
+                        </div>
+                    </div>
+                    <Icon
+                        name="square-arrow"
+                        class="w-5 h-5 text-gray-400 group-hover:translate-x-1 transition-transform"
+                    />
+                </a>
+                <a
+                    href="https://github.com/Diego17cp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-all duration-200 group"
+                >
+                    <div
+                        class="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg group-hover:bg-blue-200 dark:group-hover:bg-blue-900/50 transition-colors"
+                    >
+                        <Icon
+                            name="email"
+                            class="size-6 text-blue-600 dark:text-blue-400"
+                        />
+                    </div>
+                    <div class="flex-1">
+                        <div class="text-lg font-semibold">
+                            Contact Developer
+                        </div>
+                        <div class="text-sm text-gray-500 dark:text-gray-400">
+                            Get in touch
+                        </div>
+                    </div>
+                    <Icon
+                        name="square-arrow"
+                        class="w-5 h-5 text-gray-400 group-hover:translate-x-1 transition-transform"
+                    />
+                </a>
+            </div>
+            <div class="pt-8 pb-4 text-center space-y-4">
+                <div
+                    class="flex items-center justify-center gap-2 text-sm text-gray-500 dark:text-gray-400"
+                >
+                    <span>Made with</span>
+                    <span class="text-red-500">❤️</span>
+                    <span>by</span>
+                    <a
+                        href="https://github.com/yourusername"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-accent font-medium hover:underline"
+                    >
+                        DialCash Team
+                    </a>
+                </div>
+                <div class="text-xs text-gray-400 dark:text-gray-500">
+                    Version 1.0.0 • MIT License
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
