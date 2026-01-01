@@ -1,0 +1,17 @@
+---
+import AppLayout from "../AppLayout.astro";
+import Header from "./components/header/Header.astro";
+import Footer from "./components/footer/Footer.astro";
+
+const { className = "", title } = Astro.props;
+---
+
+<AppLayout title={title}>
+    <div class="flex flex-col h-screen overflow-x-hidden bg-linear-to-br from-gray-50 via-blue-300/30 to-blue-500 dark:from-gray-900 dark:via-gray-900 dark:to-blue-950">
+        <Header />
+        <main class={`flex-1 overflow-y-auto main-scroll ${className}`}>
+            <slot />
+        </main>
+        <Footer />
+    </div>
+</AppLayout>
