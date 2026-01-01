@@ -1,0 +1,36 @@
+---
+import phoneFrame from "@/assets/mockups/phone-frame.webp";
+import { PHONE_SCREEN } from "@/config";
+
+interface Props {
+	screenshot: string;
+	alt?: string;
+}
+
+const { screenshot, alt = "App screenshot" } = Astro.props;
+---
+
+<div class="relative w-70 sm:w-[320px] md:w-90 lg:w-100">
+	<div
+		class="absolute overflow-hidden bg-black"
+		style={`
+            top: ${PHONE_SCREEN.top};
+            left: ${PHONE_SCREEN.left};
+            width: ${PHONE_SCREEN.width};
+            height: ${PHONE_SCREEN.height};
+            border-radius: ${PHONE_SCREEN.borderRadius};
+    `}
+	>
+		<img
+			src={screenshot}
+			alt={alt}
+			class="w-full h-full object-cover"
+			loading="lazy"
+		/>
+	</div>
+	<img
+		src={phoneFrame.src}
+		alt="Phone frame"
+		class="relative z-10 w-full pointer-events-none select-none"
+	/>
+</div>
