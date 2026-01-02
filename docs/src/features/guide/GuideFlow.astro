@@ -1,0 +1,137 @@
+---
+import { Icon } from "astro-icon/components";
+
+const flowSteps = [
+    {
+        number: "01",
+        icon: "tabler-wallet",
+        title: "Record Your Transactions",
+        description: "Quickly log every expense and income as they happen. Add details like amount, category, date, and optional notes to keep track of your financial activity.",
+        highlight: "Fast & Simple",
+        color: "blue"
+    },
+    {
+        number: "02",
+        icon: "tabler-folders",
+        title: "Keep Everything Organized",
+        description: "Use categories and tags to organize your transactions. Filter by date, type, or amount to find exactly what you need in seconds.",
+        highlight: "Smart Organization",
+        color: "orange"
+    },
+    {
+        number: "03",
+        icon: "tabler-chart-line",
+        title: "Review & Analyze",
+        description: "Visualize your spending patterns with clear insights. Understand where your money goes and make informed financial decisions over time.",
+        highlight: "Data-Driven Insights",
+        color: "blue"
+    }
+];
+---
+
+<section class="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden" id="workflow">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-200 bg-linear-to-br from-blue-100/40 to-orange-100/40 dark:from-blue-900/20 dark:to-orange-900/20 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-6xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-20">
+            <span class="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-semibold mb-4">
+                How It Works
+            </span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-titles font-bold text-gray-900 dark:text-white mb-6">
+                Your Financial
+                <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-orange-500 dark:from-blue-400 dark:to-accent">
+                    Workflow
+                </span>
+            </h2>
+            <p class="text-lg sm:text-xl font-body text-gray-600 dark:text-gray-300">
+                Dialcash follows a simple three-step process to help you take control of your money
+            </p>
+        </div>
+        <div class="space-y-16 md:space-y-24">
+            {flowSteps.map((step, index) => (
+                <div class={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 items-center`}>
+                    <div class="flex-1 space-y-6">
+                        <div class="flex items-center gap-4">
+                            <span class="text-6xl sm:text-7xl lg:text-8xl pb-5 font-titles font-bold text-transparent bg-clip-text bg-linear-to-br from-blue-600 to-orange-500 dark:from-blue-400 dark:to-accent">
+                                {step.number}
+                            </span>
+                            <div class={`w-14 h-14 rounded-xl bg-linear-to-br ${
+                                step.color === 'blue' 
+                                    ? 'from-blue-500 to-blue-600 dark:from-blue-600 dark:to-blue-700' 
+                                    : 'from-orange-500 to-orange-600 dark:from-orange-600 dark:to-orange-700'
+                            } flex items-center justify-center shadow-lg`}>
+                                <Icon name={step.icon} class="w-7 h-7 text-white" />
+                            </div>
+                        </div>
+                        <h3 class="text-3xl sm:text-4xl font-titles font-bold text-gray-900 dark:text-white">
+                            {step.title}
+                        </h3>
+                        <p class="text-lg sm:text-xl font-body text-gray-600 dark:text-gray-300 leading-relaxed">
+                            {step.description}
+                        </p>
+                        <div class="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-blue-50 to-orange-50 dark:from-blue-900/20 dark:to-orange-900/20 rounded-full border border-blue-200 dark:border-blue-700/50">
+                            <Icon name="tabler-check" class="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                            <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                                {step.highlight}
+                            </span>
+                        </div>
+                        {index < flowSteps.length - 1 && (
+                            <div class="hidden md:flex items-center gap-3 pt-4">
+                                <div class="h-px w-12 bg-linear-to-r from-blue-400 to-orange-400"></div>
+                                <Icon name="right-arrow" class="w-6 h-6 text-blue-500 dark:text-blue-400" />
+                            </div>
+                        )}
+                    </div>
+                    <div class="flex-1 max-w-md">
+                        <div class="group relative">
+                            <div class={`absolute inset-0 bg-linear-to-br ${
+                                step.color === 'blue'
+                                    ? 'from-blue-500/20 to-blue-600/20 dark:from-blue-600/20 dark:to-blue-700/20'
+                                    : 'from-orange-500/20 to-orange-600/20 dark:from-orange-600/20 dark:to-orange-700/20'
+                            } rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10`}></div>                            
+                            <div class="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 dark:border-gray-700 group-hover:border-blue-300 dark:group-hover:border-blue-600 transition-all duration-300 group-hover:shadow-xl">
+                                <div class={`w-20 h-20 mx-auto mb-6 rounded-2xl bg-linear-to-br ${
+                                    step.color === 'blue'
+                                        ? 'from-blue-500 to-blue-600'
+                                        : 'from-orange-500 to-orange-600'
+                                } flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                                    <Icon name={step.icon} class="w-10 h-10 text-white" />
+                                </div>
+                                <h4 class="text-xl font-titles font-bold text-gray-900 dark:text-white text-center mb-3">
+                                    {step.title}
+                                </h4>
+                                <p class="text-sm font-body text-gray-600 dark:text-gray-300 text-center">
+                                    {step.highlight}
+                                </p>
+                            </div>
+                            <div class="absolute -top-4 -right-4 w-12 h-12 bg-linear-to-br from-blue-500 to-orange-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg md:hidden">
+                                {index + 1}
+                            </div>
+                        </div>
+                    </div>
+                    {index < flowSteps.length - 1 && (
+                        <div class="flex md:hidden justify-center">
+                            <Icon name="tabler-arrow-down" class="w-8 h-8 text-blue-500 dark:text-blue-400" />
+                        </div>
+                    )}
+                </div>
+            ))}
+        </div>
+        <div class="text-center mt-20">
+            <div class="inline-flex flex-col items-center gap-4">
+                <p class="text-lg font-body text-gray-600 dark:text-gray-300">
+                    Ready to start managing your finances?
+                </p>
+                <a 
+                    href="/download"
+                    class="group inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-white bg-linear-to-r from-blue-600 to-orange-500 hover:from-blue-700 hover:to-orange-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                >
+                    <Icon name="tabler-download" class="w-6 h-6" />
+                    <span>Download Dialcash</span>
+                    <Icon name="right-arrow" class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
