@@ -1,0 +1,178 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+
+import addExpenseImg from "@/assets/screenshots/add-expense.webp";
+import transactionsListImg from "@/assets/screenshots/transactions-list.webp";
+import transactionListWithFiltersImg from "@/assets/screenshots/transactions-list-filters.webp";
+import categoriesImg from "@/assets/screenshots/categories.webp";
+import dashboardImg from "@/assets/screenshots/dashboard.webp";
+
+const sections = [
+    {
+        id: "recording",
+        badge: "Step 1",
+        badgeColor: "blue",
+        icon: "tabler-edit",
+        title: "Recording Expenses and Income",
+        subtitle: "Build your financial picture one transaction at a time",
+        description: "Recording your transactions is the foundation of everything in Dialcash. Each expense or income you log builds a clearer picture of how you use your money day by day.",
+        content: [
+            "Log daily expenses like meals, transportation, or small purchases",
+            "Track one-time or occasional payments",
+            "Record main income or side earnings",
+            "Start small and build the habit over time"
+        ],
+        tip: "You don't need to be exact to the cent or record absolutely everything from day one. What matters is creating the habit and being consistent over time.",
+        image: addExpenseImg,
+        imageAlt: "Add expense screen showing transaction form",
+        imagePosition: "object-center"
+    },
+    {
+        id: "organization",
+        badge: "Step 2",
+        badgeColor: "orange",
+        icon: "tabler-folders",
+        title: "Organizing Your Information",
+        subtitle: "Keep your financial history clear and accessible",
+        description: "Dialcash organizes all your transactions in a clear, chronological list, allowing you to easily review what expenses and income you've recorded.",
+        content: [
+            "Remember where your money went",
+            "Detect frequent expenses and spending patterns",
+            "Maintain an organized history of your transactions",
+            "Review past financial decisions anytime"
+        ],
+        tip: "The goal isn't just to record, but to be able to look back and understand what financial decisions you made at any given time.",
+        images: [transactionsListImg, transactionListWithFiltersImg],
+        imageAlts: ["Transaction list view", "Transaction list with filters applied"],
+        imagePosition: "object-top"
+    },
+    {
+        id: "budget",
+        badge: "Step 3",
+        badgeColor: "blue",
+        icon: "tabler-wallet",
+        title: "Main Accounts and General Budget",
+        subtitle: "Track your real available money accurately",
+        description: "In Dialcash, some accounts can be marked as main accounts across categories like Bank Accounts, Cash, Cards, or Digital Wallets. These accounts represent your primary money and are used to display your general budget on the main screen.",
+        content: [
+            "Separate secondary or specific-use accounts",
+            "Get a clearer view of your real available money",
+            "Avoid confusion when mixing different types of funds",
+            "Calculate total balance from main accounts only"
+        ],
+        tip: "Choosing which accounts are main accounts correctly will help you better interpret the information Dialcash displays.",
+        images: [dashboardImg, categoriesImg],
+        imageAlts: ["Dashboard showing budget overview", "Categories organization"],
+        imagePosition: "object-top"
+    }
+];
+---
+
+<section class="relative py-20 px-4 sm:px-6 lg:px-8" id="features">
+    <div class="max-w-6xl mx-auto space-y-32">
+        {sections.map((section, index) => (
+            <div id={section.id} class="scroll-mt-20">
+                <div class={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}>
+                    <div class="flex-1 space-y-6">
+                        <span class={`inline-block px-4 py-2 ${
+                            section.badgeColor === 'blue' 
+                                ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
+                                : 'bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400'
+                        } rounded-full text-sm font-semibold`}>
+                            {section.badge}
+                        </span>
+                        <div class="flex items-start gap-4">
+                            <div class={`shrink-0 w-12 h-12 rounded-xl bg-linear-to-br ${
+                                section.badgeColor === 'blue'
+                                    ? 'from-blue-500 to-blue-600'
+                                    : 'from-orange-500 to-orange-600'
+                            } flex items-center justify-center shadow-lg`}>
+                                <Icon name={section.icon} class="w-6 h-6 text-white" />
+                            </div>
+                            <div>
+                                <h2 class="text-3xl sm:text-4xl font-titles font-bold text-gray-900 dark:text-white mb-2">
+                                    {section.title}
+                                </h2>
+                                <p class="text-lg font-body text-blue-600 dark:text-blue-400">
+                                    {section.subtitle}
+                                </p>
+                            </div>
+                        </div>
+                        <p class="text-lg font-body text-gray-600 dark:text-gray-300 leading-relaxed">
+                            {section.description}
+                        </p>
+                        <div class="space-y-3">
+                            {section.content.map((item) => (
+                                <div class="flex items-start gap-3">
+                                    <Icon name="tabler-check" class={`shrink-0 w-5 h-5 mt-0.5 ${
+                                        section.badgeColor === 'blue'
+                                            ? 'text-blue-600 dark:text-blue-400'
+                                            : 'text-orange-600 dark:text-orange-400'
+                                    }`} />
+                                    <span class="font-body text-gray-700 dark:text-gray-300">
+                                        {item}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+                        <div class="bg-linear-to-br from-blue-50 to-orange-50 dark:from-blue-900/10 dark:to-orange-900/10 rounded-2xl p-6 border border-blue-200 dark:border-blue-700/50">
+                            <div class="flex items-start gap-3">
+                                <Icon name="tabler-lightbulb" class="shrink-0 w-6 h-6 text-orange-600 dark:text-orange-400" />
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white mb-1 font-titles">
+                                        Pro Tip
+                                    </h4>
+                                    <p class="text-sm font-body text-gray-600 dark:text-gray-300 leading-relaxed">
+                                        {section.tip}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 max-w-lg">
+                        {section.images ? (
+                            <div class="grid grid-cols-2 gap-4">
+                                {section.images.map((img, imgIndex) => (
+                                    <div class="group relative">
+                                        <div class="absolute inset-0 bg-linear-to-br from-blue-500/20 to-orange-500/20 dark:from-blue-600/20 dark:to-orange-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+                                        <div class="relative bg-white dark:bg-gray-800 rounded-2xl p-2 shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                                            <div class="rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-900 aspect-9/16">
+                                                <Image 
+                                                    src={img}
+                                                    alt={section.imageAlts[imgIndex]}
+                                                    class={`w-full h-full object-cover ${section.imagePosition}`}
+                                                    loading="lazy"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <div class="group relative">
+                                <div class="absolute inset-0 bg-linear-to-br from-blue-500/20 to-orange-500/20 dark:from-blue-600/20 dark:to-orange-600/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10"></div>
+                                
+                                <div class="relative bg-white dark:bg-gray-800 rounded-3xl p-3 shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden group-hover:scale-105 transition-transform duration-500">
+                                    <div class="rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-900 aspect-9/16">
+                                        <Image 
+                                            src={section.image}
+                                            alt={section.imageAlt}
+                                            class={`w-full h-full object-cover ${section.imagePosition}`}
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+                {index < sections.length - 1 && (
+                    <div class="flex items-center justify-center mt-20">
+                        <div class="h-px w-24 bg-linear-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent"></div>
+                    </div>
+                )}
+            </div>
+        ))}
+    </div>
+</section>
