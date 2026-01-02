@@ -1,0 +1,85 @@
+---
+import { Icon } from "astro-icon/components";
+const clarifications = [
+    {
+        icon: "tabler-building-bank",
+        title: "Not a Banking App",
+        description: "Dialcash doesn't connect to your bank or make real transactions. It's a tracking tool, not a financial service."
+    },
+    {
+        icon: "tabler-transfer",
+        title: "No Money Transfers",
+        description: "You cannot send or receive actual money through Dialcash. It only records your financial activity."
+    },
+    {
+        icon: "tabler-device-mobile",
+        title: "Local Storage Only",
+        description: "All your information is stored locally on your device. We don't have access to your financial data."
+    },
+    {
+        icon: "tabler-shield-lock",
+        title: "Privacy First",
+        description: "Your data never leaves your phone. No cloud syncing, no external servers, complete privacy."
+    }
+];
+---
+<section class="relative py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-b from-transparent to-gray-50/50 dark:to-gray-900/50">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full text-sm font-semibold mb-4">
+                Important Notice
+            </span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-titles font-bold text-gray-900 dark:text-white mb-6">
+                What Dialcash
+                <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-orange-500 dark:from-blue-400 dark:to-accent">
+                    Is Not
+                </span>
+            </h2>
+            <p class="text-lg sm:text-xl font-body text-gray-600 dark:text-gray-300">
+                Understanding what Dialcash doesn't do is just as important as knowing what it does
+            </p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {clarifications.map((item, index) => (
+                <div 
+                    class="group relative"
+                    style={`animation-delay: ${index * 100}ms`}
+                >
+                    <div class="relative h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-600 transition-all duration-300 hover:shadow-lg">
+                        <div class="mb-4">
+                            <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-linear-to-br from-orange-500 to-red-500 dark:from-orange-600 dark:to-red-600 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <Icon name={item.icon} class="w-6 h-6 text-white" />
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-titles font-bold text-gray-900 dark:text-white mb-2">
+                            {item.title}
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 font-body text-sm leading-relaxed">
+                            {item.description}
+                        </p>
+                    </div>
+                </div>
+            ))}
+        </div>
+        <div class="max-w-3xl mx-auto">
+            <div class="bg-linear-to-br from-orange-50 to-red-50 dark:from-orange-900/10 dark:to-red-900/10 rounded-3xl p-8 border border-orange-200 dark:border-orange-700/50">
+                <div class="flex items-start gap-4">
+                    <div class="shrink-0 w-12 h-12 rounded-xl bg-linear-to-br from-orange-500 to-red-500 flex items-center justify-center shadow-lg">
+                        <Icon name="tabler-info-circle" class="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-titles font-bold text-gray-900 dark:text-white mb-3">
+                            Dialcash is a Financial Tracking Tool
+                        </h3>
+                        <p class="text-gray-700 dark:text-gray-300 font-body leading-relaxed mb-3">
+                            Think of Dialcash as your personal financial notebook. It helps you understand your spending patterns and make better financial decisions, but it doesn't handle actual money or connect to your bank accounts.
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-400 font-body text-sm leading-relaxed">
+                            All information is stored locally on your device for maximum privacy and security. You have complete control over your data at all times.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
