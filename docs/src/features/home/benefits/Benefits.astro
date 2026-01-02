@@ -1,0 +1,74 @@
+---
+import { Icon } from "astro-icon/components";
+
+const benefits = [
+    {
+        icon: "tabler-clock-hour-4",
+        title: "Save Time Daily",
+        description: "Track expenses in seconds, not minutes. No more end-of-month spreadsheet marathons."
+    },
+    {
+        icon: "tabler-shield-check",
+        title: "Privacy First",
+        description: "Your data stays with you. We never sell or share your financial information."
+    },
+    {
+        icon: "tabler-brain",
+        title: "Less Financial Stress",
+        description: "Know your spending patterns and make confident decisions without anxiety."
+    },
+    {
+        icon: "tabler-chart-dots",
+        title: "Clear Data Insights",
+        description: "Understand your financial habits with simple, actionable information you can actually use."
+    }
+];
+---
+
+<section class="relative py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-b from-transparent to-gray-50/50 dark:to-gray-900/50">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-semibold mb-4">
+                Why Choose Dialcash
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-titles lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                Built for your
+                <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-orange-500 dark:from-blue-400 dark:to-orange-400">
+                    peace of mind
+                </span>
+            </h2>
+            <p class="text-base font-body md:text-xl text-gray-600 dark:text-gray-300">
+                Not just another finance app. Dialcash is designed to make managing money feel natural, not overwhelming.
+            </p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {benefits.map((benefit, index) => (
+                <div 
+                    class="group relative"
+                    style={`animation-delay: ${index * 100}ms`}
+                >
+                    <div class="absolute inset-0 bg-linear-to-br from-blue-500/10 to-orange-500/10 dark:from-blue-600/10 dark:to-orange-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="relative h-full bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 group-hover:border-blue-300 dark:group-hover:border-blue-600 transition-all duration-300 group-hover:shadow-lg">
+                        <div class="mb-4">
+                            <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-linear-to-br from-blue-500 to-orange-500 dark:from-blue-600 dark:to-orange-600 shadow-md group-hover:scale-110 transition-transform duration-300">
+                                <Icon name={benefit.icon} class="w-6 h-6 text-white" />
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                            {benefit.title}
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                            {benefit.description}
+                        </p>
+                    </div>
+                </div>
+            ))}
+        </div>
+        <div class="text-center mt-16">
+            <p class="text-gray-600 font-body dark:text-gray-400 text-lg md:text-xl">
+                Join thousands who've simplified their financial life with 
+                <span class="font-semibold text-blue-600 dark:text-blue-400">Dialcash</span>
+            </p>
+        </div>
+    </div>
+</section>
