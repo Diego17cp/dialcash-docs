@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import type { NavConfig } from "@/config";
+import { GITHUB_LINKS, PROJECT } from "@/constants";
 
 interface Props {
     navConfig: NavConfig;
@@ -57,7 +58,7 @@ const { navConfig } = Astro.props;
                     Community
                 </h3>
                 <a
-                    href="https://github.com/Diego17cp/dialcash"
+                    href={GITHUB_LINKS.REPO}
                     target="_blank"
                     rel="noopener noreferrer"
                     class="flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-all duration-200 group"
@@ -81,7 +82,7 @@ const { navConfig } = Astro.props;
                     />
                 </a>
                 <a
-                    href="https://github.com/Diego17cp/dialcash/issues/new"
+                    href={`${GITHUB_LINKS.ISSUES}/new`}
                     target="_blank"
                     rel="noopener noreferrer"
                     class="flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-all duration-200 group"
@@ -106,7 +107,7 @@ const { navConfig } = Astro.props;
                     />
                 </a>
                 <a
-                    href="https://github.com/Diego17cp"
+                    href={GITHUB_LINKS.OWNER}
                     target="_blank"
                     rel="noopener noreferrer"
                     class="flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-all duration-200 group"
@@ -141,7 +142,7 @@ const { navConfig } = Astro.props;
                     <span class="text-red-500">❤️</span>
                     <span>by</span>
                     <a
-                        href="https://github.com/yourusername"
+                        href={GITHUB_LINKS.OWNER}
                         target="_blank"
                         rel="noopener noreferrer"
                         class="text-accent font-medium hover:underline"
@@ -150,7 +151,7 @@ const { navConfig } = Astro.props;
                     </a>
                 </div>
                 <div class="text-xs text-gray-400 dark:text-gray-500">
-                    Version 1.0.0 • MIT License
+                    Version {PROJECT.VERSION} • MIT License
                 </div>
             </div>
         </div>

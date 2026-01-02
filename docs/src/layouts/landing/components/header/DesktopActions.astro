@@ -1,4 +1,5 @@
 ---
+import { GITHUB_LINKS } from "@/constants";
 import { Icon } from "astro-icon/components";
 ---
 <div
@@ -6,7 +7,7 @@ import { Icon } from "astro-icon/components";
 	id="desktop-actions"
 >
 	<a
-		href="https://github.com/Diego17cp/dialcash"
+		href={GITHUB_LINKS.REPO}
 		target="_blank"
 		rel="noopener noreferrer"
 		class="group relative p-3 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl"

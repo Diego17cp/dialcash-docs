@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import logo from "@/assets/brand/light-logo.webp";
+import { GITHUB_LINKS, PROJECT } from "@/constants";
 ---
 
 <footer
@@ -33,7 +34,7 @@ import logo from "@/assets/brand/light-logo.webp";
 				</p>
 				<div class="flex items-center space-x-3 pt-2">
 					<a
-						href="https://github.com/Diego17cp/dialcash"
+						href={GITHUB_LINKS.REPO}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="p-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors duration-200 group"
@@ -56,7 +57,7 @@ import logo from "@/assets/brand/light-logo.webp";
 				<ul class="space-y-3">
 					<li>
 						<a
-							href="https://github.com/Diego17cp/dialcash"
+							href={GITHUB_LINKS.REPO}
 							target="_blank"
 							rel="noopener noreferrer"
 							class="text-gray-400 hover:text-white transition-colors duration-200 text-sm flex items-center gap-2 group"
@@ -69,7 +70,7 @@ import logo from "@/assets/brand/light-logo.webp";
 					</li>
 					<li>
 						<a
-							href="https://github.com/Diego17cp/dialcash/issues"
+							href={GITHUB_LINKS.ISSUES}
 							target="_blank"
 							rel="noopener noreferrer"
 							class="text-gray-400 hover:text-white transition-colors duration-200 text-sm flex items-center gap-2 group"
@@ -82,7 +83,7 @@ import logo from "@/assets/brand/light-logo.webp";
 					</li>
 					<li>
 						<a
-							href="https://github.com/Diego17cp/dialcash/pulls"
+							href={GITHUB_LINKS.PULL_REQUESTS}
 							target="_blank"
 							rel="noopener noreferrer"
 							class="text-gray-400 hover:text-white transition-colors duration-200 text-sm flex items-center gap-2 group"
@@ -95,7 +96,9 @@ import logo from "@/assets/brand/light-logo.webp";
 					</li>
 					<li>
 						<a
-							href="https://gitub.com/Diego17cp"
+							href={GITHUB_LINKS.OWNER}
+							target="_blank"
+							rel="noopener noreferrer"
 							class="text-gray-400 hover:text-white transition-colors duration-200 text-sm flex items-center gap-2 group"
 						>
 							<span
@@ -181,7 +184,7 @@ import logo from "@/assets/brand/light-logo.webp";
 					</li>
 					<li>
 						<a
-							href="https://github.com/Diego17cp/dialcash/releases"
+							href={GITHUB_LINKS.RELEASES}
 							target="_blank"
 							rel="noopener noreferrer"
 							class="text-gray-400 hover:text-white transition-colors duration-200 text-sm flex items-center gap-2 group"
@@ -239,7 +242,7 @@ import logo from "@/assets/brand/light-logo.webp";
 					</span>
 					<span>by</span>
 					<a
-						href="https://github.com/Diego17cp"
+						href={GITHUB_LINKS.OWNER}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="inline-flex items-center gap-1.5 text-orange-500 hover:text-orange-300 font-medium transition-colors duration-200 group"
@@ -259,11 +262,11 @@ import logo from "@/assets/brand/light-logo.webp";
 					<span
 						class="px-2 py-1 bg-gray-800 rounded text-xs font-mono"
 					>
-						v1.0.0
+						v{PROJECT.VERSION}
 					</span>
 					<span class="text-gray-600">•</span>
 					<a
-						href="https://github.com/Diego17cp/dialcash"
+						href={GITHUB_LINKS.REPO}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="hover:text-white transition-colors duration-200"
