@@ -1,0 +1,58 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<section class="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-linear-to-b from-gray-50/50 to-transparent dark:from-gray-900/50">
+    <div class="relative max-w-4xl mx-auto text-center">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-semibold mb-4">
+                <Icon name="tabler-rocket" class="w-4 h-4" />
+            <span>Start Your Financial Journey</span>
+            </span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-titles font-bold text-gray-900 dark:text-white mb-6">
+                Ready to take control of
+                <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-orange-500 dark:from-blue-400 dark:to-accent">
+                    your money?
+                </span>
+            </h2>
+            <p class="text-lg sm:text-xl font-body text-gray-600 dark:text-gray-300">
+                Join thousands of users who've simplified their finances with Dialcash. Download now and start tracking in seconds.
+            </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <a 
+                href="/download"
+                class="group inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-blue-600 bg-white hover:bg-gray-50 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            >
+                <Icon name="tabler-download" class="w-6 h-6" />
+                <span>Download for free</span>
+            </a>
+            
+            <a 
+                href="/guide"
+                class="group inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-gray-700 dark:text-gray-300 bg-white/60 dark:bg-gray-800 hover:bg-gray-50/50 dark:hover:bg-gray-700 rounded-full shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 transform hover:scale-105"
+            >
+                <span>View full guide</span>
+                <Icon name="right-arrow" class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+        </div>
+        <div class="flex flex-wrap justify-center gap-6 dark:text-white/90 text-gray-700 font-body">
+            <div class="flex items-center gap-2">
+                <Icon name="tabler-check" class="w-5 h-5" />
+                <span>100% Free</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <Icon name="tabler-check" class="w-5 h-5" />
+                <span>No Credit Card</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <Icon name="tabler-check" class="w-5 h-5" />
+                <span>Works Offline</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <Icon name="tabler-check" class="w-5 h-5" />
+                <span>Your Data, Your Control</span>
+            </div>
+        </div>
+    </div>
+</section>
