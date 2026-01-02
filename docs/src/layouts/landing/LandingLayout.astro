@@ -3,10 +3,10 @@ import AppLayout from "../AppLayout.astro";
 import Header from "./components/header/Header.astro";
 import Footer from "./components/footer/Footer.astro";
 
-const { className = "", title } = Astro.props;
+const { className = "", title, description } = Astro.props;
 ---
 
-<AppLayout title={title}>
+<AppLayout title={title} description={description}>
     <div class="min-h-screen flex flex-col bg-linear-to-br from-gray-50 via-blue-300/30 to-blue-500 dark:from-gray-900 dark:via-gray-900 dark:to-blue-950">
         <Header />
         <main class={`flex-1 ${className}`}>
