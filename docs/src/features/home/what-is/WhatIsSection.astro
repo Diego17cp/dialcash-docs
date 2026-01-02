@@ -1,0 +1,66 @@
+---
+import { Icon } from "astro-icon/components";
+
+const features = [
+    {
+        icon: "tabler-bolt",
+        title: "Quick Expense Tracking",
+        description: "Log your expenses in seconds with our intuitive interface. No complicated forms or endless fields to fill."
+    },
+    {
+        icon: "tabler-filter",
+        title: "Smart Filtering",
+        description: "Find any transaction instantly with powerful filters. Search by date, category, amount, or description effortlessly."
+    },
+    {
+        icon: "tabler-wifi-off",
+        title: "Works Offline",
+        description: "Track your finances anywhere, anytime. No internet connection required for core features."
+    }
+];
+---
+
+<section class="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-200 bg-linear-to-br from-blue-100/40 to-orange-100/40 dark:from-blue-900/20 dark:to-orange-900/20 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-6xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-4xl lg:text-6xl font-titles font-bold text-gray-900 dark:text-white mb-6">
+                What is <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-accent dark:from-blue-400 dark:to-accent">Dialcash?</span>
+            </h2>
+            <p class="text-base md:text-2xl font-body text-gray-600 dark:text-gray-300 leading-relaxed">
+                Dialcash is a mobile app designed for people who want real control over their spending without using spreadsheets or complicated financial tools. Simple, fast, and powerful.
+            </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            {features.map((feature) => (
+                <div class="group relative">
+                    <div class="absolute inset-0 bg-linear-to-br from-blue-500/20 to-orange-500/20 dark:from-blue-600/20 dark:to-orange-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-xl h-full">
+                        <div class="mb-6">
+                            <div class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-linear-to-br from-blue-500 to-orange-500 dark:from-blue-600 dark:to-accent shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <Icon name={feature.icon} class="w-7 h-7 text-white" />
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                            {feature.title}
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            {feature.description}
+                        </p>
+                    </div>
+                </div>
+            ))}
+        </div>
+        <div class="text-center mt-16">
+            <a 
+                href="/guide" 
+                class="inline-flex items-center gap-2 text-blue-600 dark:text-primary hover:text-orange-500 dark:hover:text-accent font-semibold text-lg group transition-colors duration-300"
+            >
+                <span>Learn more about features</span>
+                <Icon name="right-arrow" class="size-7 group-hover:translate-x-1 transition-transform" />
+            </a>
+        </div>
+    </div>
+</section>
