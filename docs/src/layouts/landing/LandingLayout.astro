@@ -7,7 +7,7 @@ const { className = "", title, description } = Astro.props;
 ---
 
 <AppLayout title={title} description={description}>
-    <div class="min-h-screen flex flex-col bg-linear-to-br from-gray-50 via-blue-300/30 to-blue-500 dark:from-gray-900 dark:via-gray-900 dark:to-blue-950">
+    <div class="min-h-screen flex flex-col bg-linear-to-br from-gray-50 via-blue-100/30 to-blue-200 dark:from-gray-900 dark:via-gray-900 dark:to-blue-950">
         <Header />
         <main class={`flex-1 ${className}`}>
             <slot />
