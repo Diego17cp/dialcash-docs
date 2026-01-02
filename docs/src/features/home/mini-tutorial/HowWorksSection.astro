@@ -1,0 +1,127 @@
+---
+import { Icon } from "astro-icon/components";
+
+import addExpenseScreenshor from "@/assets/screenshots/add-expense.webp";
+import categoriesScreenshot from "@/assets/screenshots/categories.webp";
+import editTransactionScreenshot from "@/assets/screenshots/edit-transaction.webp";
+
+const steps = [
+    {
+        number: "01",
+        title: "Log Your Expenses",
+        description: "Add a transaction in seconds. Just the amount, category, and done.",
+        icon: "tabler-wallet",
+        image: addExpenseScreenshor.src,
+        imagePosition: "object-[center_20%]"
+    },
+    {
+        number: "02",
+        title: "Organize by Category",
+        description: "Automatically categorize or create custom tags that make sense for you.",
+        icon: "tabler-category",
+        image: categoriesScreenshot.src,
+        imagePosition: "object-[center_10%]"
+    },
+    {
+        number: "03",
+        title: "Edit Anytime",
+        description: "Made a mistake? Change or delete any transaction instantly with a single tap.",
+        icon: "tabler-edit",
+        image: editTransactionScreenshot.src,
+        imagePosition: "object-[center_bottom]"
+    }
+];
+---
+
+<section class="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-orange-200/30 dark:bg-orange-900/20 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-200/30 dark:bg-blue-900/20 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-6xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-20">
+            <span class="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-accent rounded-full text-sm font-semibold mb-4">
+                Simple & Easy
+            </span>
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-titles font-bold text-gray-900 dark:text-white mb-6">
+                How it
+                <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-orange-500 dark:from-blue-400 dark:to-accent">
+                    works
+                </span>
+            </h2>
+            <p class="text-xl sm:text-2xl font-body text-gray-600 dark:text-gray-300">
+                Three simple steps to take control of your finances
+            </p>
+        </div>
+        <div class="space-y-20 md:space-y-32">
+            {steps.map((step, index) => (
+                <div class={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 items-center`}>
+                    <div class="flex-1 space-y-6">
+                        <div class="inline-flex items-center gap-4">
+                            <span class="text-6xl sm:text-7xl pb-4 lg:text-8xl font-titles font-bold text-transparent bg-clip-text bg-linear-to-br from-blue-600 to-orange-500 dark:from-blue-400 dark:to-accent">
+                                {step.number}
+                            </span>
+                            <div class="w-12 h-12 rounded-full bg-linear-to-br from-blue-500 to-orange-500 dark:from-blue-600 dark:to-accent flex items-center justify-center shadow-lg">
+                                <Icon name={step.icon} class="w-6 h-6 text-white" />
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl sm:text-4xl font-titles font-bold text-gray-900 dark:text-white mb-4">
+                                {step.title}
+                            </h3>
+                            <p class="text-xl sm:text-2xl font-body text-gray-600 dark:text-gray-300 leading-relaxed">
+                                {step.description}
+                            </p>
+                        </div>
+                        {index < steps.length - 1 && (
+                            <div class="hidden md:flex items-center gap-3 pt-4">
+                                <div class="h-px w-12 bg-linear-to-r from-blue-400 to-orange-400"></div>
+                                <Icon name="right-arrow" class="w-6 h-6 text-blue-500 dark:text-blue-400" />
+                            </div>
+                        )}
+                    </div>
+                    <div class="flex-1 max-w-sm mx-auto">
+                        <div class="group relative">
+                            <div class="absolute inset-0 bg-linear-to-br from-blue-500/20 to-orange-500/20 dark:from-blue-600/20 dark:to-accent/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10"></div>
+                            
+                            <div class="relative bg-white dark:bg-gray-800 rounded-3xl p-2 shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden group-hover:scale-105 transition-transform duration-500">
+                                <div class="rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-900">
+                                    <img 
+                                        src={step.image} 
+                                        alt={step.title}
+                                        class={`w-full h-auto max-h-125 object-cover ${step.imagePosition || 'object-center'}`}
+                                        loading="lazy"
+                                    />
+                                </div>
+                            </div>
+                            
+                            <div class="absolute -top-4 -right-4 w-12 h-12 bg-linear-to-br from-blue-500 to-orange-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg md:hidden">
+                                {index + 1}
+                            </div>
+                        </div>
+                    </div>
+                    {index < steps.length - 1 && (
+                        <div class="flex md:hidden justify-center">
+                            <Icon name="right-arrow" class="w-8 h-8 text-blue-500 dark:text-blue-400" />
+                        </div>
+                    )}
+                </div>
+            ))}
+        </div>
+        <div class="text-center mt-20">
+            <div class="inline-flex flex-col sm:flex-row gap-4 items-center">
+                <a 
+                    href="/download"
+                    class="group inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-white bg-linear-to-r from-blue-600 to-accent hover:from-blue-700 hover:to-orange-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                >
+                    <span>Start tracking now</span>
+                    <Icon name="right-arrow" class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+                <span class="text-gray-600 dark:text-gray-400 font-body text-lg">
+                    or <a href="/guide" class="text-blue-600 ml-2 dark:text-blue-400 hover:underline font-semibold">see full guide</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
