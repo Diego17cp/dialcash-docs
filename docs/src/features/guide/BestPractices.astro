@@ -1,0 +1,71 @@
+---
+import { Icon } from "astro-icon/components";
+
+const bestPractices = [
+    {
+        icon: "tabler-clock-bolt",
+        title: "Record Immediately",
+        description: "Log your expenses as soon as they happen. The fresher the memory, the more accurate your records."
+    },
+    {
+        icon: "tabler-calendar-repeat",
+        title: "Be Consistent, Not Perfect",
+        description: "Focus on building a habit rather than recording every single cent. Consistency beats perfection."
+    },
+    {
+        icon: "tabler-chart-dots",
+        title: "Review Regularly",
+        description: "Check your transaction history weekly or monthly to identify patterns and adjust your spending habits."
+    },
+    {
+        icon: "tabler-heart-handshake",
+        title: "Use as Support, Not Obligation",
+        description: "Dialcash is a tool to help you, not stress you out. Make it work for your lifestyle, not against it."
+    }
+];
+---
+
+<section class="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden" id="tips">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-200 bg-linear-to-br from-blue-100/40 to-orange-100/40 dark:from-blue-900/20 dark:to-orange-900/20 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-6xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-semibold mb-4">
+                Pro Tips
+            </span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-titles font-bold text-gray-900 dark:text-white mb-6">
+                Best Practices for
+                <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-orange-500 dark:from-blue-400 dark:to-accent">
+                    Success
+                </span>
+            </h2>
+            <p class="text-lg sm:text-xl font-body text-gray-600 dark:text-gray-300">
+                Follow these simple guidelines to get the most out of Dialcash and build lasting financial habits
+            </p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-6">
+            {bestPractices.map((practice, index) => (
+                <div 
+                    class="group relative"
+                    style={`animation-delay: ${index * 100}ms`}
+                >
+                    <div class="absolute inset-0 bg-linear-to-br from-blue-500/20 to-orange-500/20 dark:from-blue-600/20 dark:to-orange-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-xl">
+                        <div class="mb-4">
+                            <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-linear-to-br from-blue-500 to-orange-500 dark:from-blue-600 dark:to-accent shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <Icon name={practice.icon} class="w-6 h-6 text-white" />
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-titles font-bold text-gray-900 dark:text-white mb-2">
+                            {practice.title}
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 font-body text-sm leading-relaxed">
+                            {practice.description}
+                        </p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
