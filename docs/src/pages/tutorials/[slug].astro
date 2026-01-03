@@ -78,12 +78,14 @@ import { ScreenshotItem } from "@/features/tutorials";
 							<h2 class="text-2xl sm:text-3xl font-titles font-bold text-gray-900 dark:text-white mb-8 text-center">
 								Visual Guide
 							</h2>
-							<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+							<div class="flex flex-wrap justify-center gap-6">
 								{screenshots.map((screenshot, index) => (
-									<ScreenshotItem
-										screenshot={screenshot}
-										index={index}
-									/>
+									<div class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-sm">
+										<ScreenshotItem
+											screenshot={screenshot}
+											index={index}
+										/>
+									</div>
 								))}
 							</div>
 						</div>
