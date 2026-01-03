@@ -1,0 +1,71 @@
+---
+const { tutorial } = Astro.props;
+const slug = tutorial.slug;
+const { title, description, portrait, difficulty, feature } = tutorial.data;
+
+import { Icon } from "astro-icon/components";
+import { getFeatureIcon, getDifficultyClass } from "../utils";
+---
+
+<a href={`/tutorials/${slug}`} class="group relative block">
+	<div
+		class="absolute inset-0 bg-linear-to-br from-blue-500/20 to-orange-500/20 dark:from-blue-600/20 dark:to-orange-600/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
+	>
+	</div>
+	<div
+		class="relative h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-2xl group-hover:scale-105"
+	>
+		<div
+			class="relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-900"
+		>
+			<img
+				src={portrait}
+				alt={title}
+				class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+				transition:name={`tutorial-${slug}`}
+			/>
+			<div
+				class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent"
+			>
+			</div>
+			<div class="absolute top-4 left-4">
+				<div
+					class="w-10 h-10 rounded-xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm flex items-center justify-center shadow-lg"
+				>
+					<Icon
+						name={getFeatureIcon(feature)}
+						class="w-6 h-6 text-blue-600 dark:text-blue-400"
+					/>
+				</div>
+			</div>
+			<div class="absolute top-4 right-4">
+				<span
+					class={`px-3 py-1 text-xs font-semibold rounded-full capitalize ${getDifficultyClass(difficulty)} backdrop-blur-sm`}
+				>
+					{difficulty}
+				</span>
+			</div>
+		</div>
+		<div class="p-6">
+			<h3
+				class="text-xl font-titles font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
+			>
+				{title}
+			</h3>
+			<p
+				class="text-sm font-body text-gray-600 dark:text-gray-300 leading-relaxed mb-4 line-clamp-2"
+			>
+				{description}
+			</p>
+			<div
+				class="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold text-sm"
+			>
+				<span>Read tutorial</span>
+				<Icon
+					name="right-arrow"
+					class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+				/>
+			</div>
+		</div>
+	</div>
+</a>
