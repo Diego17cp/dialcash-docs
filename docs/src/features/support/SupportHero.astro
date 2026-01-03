@@ -1,0 +1,58 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<section class="relative pt-20 pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute top-20 -left-20 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl dark:bg-blue-600/10"></div>
+        <div class="absolute bottom-20 -right-20 w-96 h-96 bg-orange-400/20 rounded-full blur-3xl dark:bg-orange-600/10"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto text-center">
+        <span class="inline-flex items-center px-4 py-2 mb-6 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-semibold">
+            <Icon name="tabler-help-circle" class="w-4 h-4 inline-block mr-1" />
+            We're Here to Help
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-titles font-bold text-gray-900 dark:text-white mb-6">
+            Support &
+            <span class="block text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-orange-500 dark:from-blue-400 dark:to-accent">
+                Help Center
+            </span>
+        </h1>
+        <p class="text-xl sm:text-2xl font-body text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12">
+            Find answers, guides, and contact options to get help with Dialcash whenever you need it
+        </p>
+        <div class="flex flex-wrap justify-center gap-6 mb-12">
+            <div class="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full border border-gray-200 dark:border-gray-700">
+                <Icon name="tabler-clock-hour-4" class="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">24/7 Resources</span>
+            </div>
+
+            <div class="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full border border-gray-200 dark:border-gray-700">
+                <Icon name="tabler-message-circle" class="w-5 h-5 text-orange-600 dark:text-orange-400" />
+                <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Fast Response</span>
+            </div>
+
+            <div class="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full border border-gray-200 dark:border-gray-700">
+                <Icon name="account-group" class="w-5 h-5 text-green-600 dark:text-green-400" />
+                <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Community Support</span>
+            </div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+                href="#quick-help"
+                class="group inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold text-white bg-linear-to-r from-blue-600 to-orange-500 hover:from-blue-700 hover:to-accent rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            >
+                <Icon name="tabler-bolt" class="w-5 h-5" />
+                <span>Quick Help</span>
+            </a>
+            
+            <a 
+                href="#contact"
+                class="group inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-full shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 transform hover:scale-105"
+            >
+                <Icon name="email" class="w-5 h-5" />
+                <span>Contact Us</span>
+            </a>
+        </div>
+    </div>
+</section>
