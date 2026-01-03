@@ -1,0 +1,173 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+
+import downloadCompleteImg from "@/assets/screenshots/download-apk.webp";
+import externalSourceImg from "@/assets/screenshots/allow-unknown-apps.webp";
+import playProtectImg from "@/assets/screenshots/play-protect-scan.webp";
+import installingImg from "@/assets/screenshots/installing-dialcash.webp";
+import openAppImg from "@/assets/screenshots/dialcash-installed.webp";
+import { GITHUB_LINKS } from "@/constants";
+
+const installSteps = [
+    {
+        number: "01",
+        icon: "tabler-download",
+        title: "Download the APK",
+        description: "Download the APK file from this page using the button above.",
+        tip: "The download will start automatically. Check your notification bar to see the progress.",
+        image: downloadCompleteImg,
+        imageAlt: "Download completed notification screen",
+        color: "blue"
+    },
+    {
+        number: "02",
+        icon: "tabler-shield-check",
+        title: "Allow External App Installation",
+        description: "Android will ask for permission to install apps from external sources. You need to enable this option to continue.",
+        tip: "Dialcash is not on the Play Store, which is why Android shows this warning. This is a standard security measure.",
+        image: externalSourceImg,
+        imageAlt: "Android external source permission dialog",
+        color: "orange"
+    },
+    {
+        number: "02.5",
+        icon: "tabler-scan",
+        title: "Google Play Protect (Optional)",
+        description: "If Google Play Protect appears asking to scan the application, you can either scan it or click 'More details' and choose 'Install anyway' for a faster process (Referencial Image).",
+        tip: "This is an optional security scan. Dialcash is safe, but you can scan it if you prefer.",
+        image: playProtectImg,
+        imageAlt: "Google Play Protect scan dialog",
+        color: "blue",
+        optional: true
+    },
+    {
+        number: "03",
+        icon: "tabler-settings",
+        title: "Install the Application",
+        description: "Once you've granted permission, proceed with the installation normally by tapping the 'Install' button.",
+        tip: "The installation process typically takes less than a minute.",
+        image: installingImg,
+        imageAlt: "App installation progress screen",
+        color: "orange"
+    },
+    {
+        number: "04",
+        icon: "tabler-rocket",
+        title: "Open Dialcash",
+        description: "When the installation is complete, tap 'Open' to launch the app and start tracking your expenses.",
+        tip: "You can also find the Dialcash icon in your app drawer.",
+        image: openAppImg,
+        imageAlt: "Installation complete with open button",
+        color: "blue"
+    }
+];
+---
+
+<section id="how-to-install" class="relative py-20 px-4 sm:px-6 lg:px-8 scroll-mt-20 bg-linear-to-b from-transparent to-gray-50/50 dark:to-gray-900/50">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full text-sm font-semibold mb-4">
+                Installation Guide
+            </span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-titles font-bold text-gray-900 dark:text-white mb-6">
+                How to Install
+                <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-orange-500 dark:from-blue-400 dark:to-accent">
+                    Dialcash
+                </span>
+            </h2>
+            <p class="text-lg sm:text-xl font-body text-gray-600 dark:text-gray-300">
+                Follow these simple steps to install Dialcash on your Android device
+            </p>
+        </div>
+        <div class="space-y-16">
+            {installSteps.map((step, index) => (
+                <div class={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center`}>
+                    <div class="flex-1 space-y-4">
+                        <div class="flex items-center gap-4">
+                            <span class="text-5xl sm:text-6xl font-titles font-bold text-transparent bg-clip-text bg-linear-to-br from-blue-600 to-orange-500 dark:from-blue-400 dark:to-accent">
+                                {step.number}
+                            </span>
+                            {step.optional && (
+                                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-xs font-semibold rounded-full">
+                                    Optional
+                                </span>
+                            )}
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class={`shrink-0 w-12 h-12 rounded-xl bg-linear-to-br ${
+                                step.color === 'blue'
+                                    ? 'from-blue-500 to-blue-600'
+                                    : 'from-orange-500 to-orange-600'
+                            } flex items-center justify-center shadow-lg`}>
+                                <Icon name={step.icon} class="w-6 h-6 text-white" />
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-titles font-bold text-gray-900 dark:text-white">
+                                {step.title}
+                            </h3>
+                        </div>
+                        <p class="text-lg font-body text-gray-600 dark:text-gray-300 leading-relaxed">
+                            {step.description}
+                        </p>
+                        <div class="bg-linear-to-br from-blue-50 to-orange-50 dark:from-blue-900/10 dark:to-orange-900/10 rounded-2xl p-4 border border-blue-200 dark:border-blue-700/50">
+                            <div class="flex items-start gap-3">
+                                <Icon name="tabler-lightbulb" class="shrink-0 w-5 h-5 text-orange-600 dark:text-orange-400 mt-0.5" />
+                                <p class="text-sm font-body text-gray-600 dark:text-gray-300 leading-relaxed">
+                                    {step.tip}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 max-w-sm">
+                        <div class="group relative">
+                            <div class={`absolute inset-0 bg-linear-to-br ${
+                                step.color === 'blue'
+                                    ? 'from-blue-500/20 to-blue-600/20'
+                                    : 'from-orange-500/20 to-orange-600/20'
+                            } rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10`}></div>
+                            <div class="relative bg-white dark:bg-gray-800 rounded-3xl p-3 shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden group-hover:scale-105 transition-transform duration-500">
+                                <div class="rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-900 aspect-9/16">
+                                    <Image 
+                                        src={step.image}
+                                        alt={step.imageAlt}
+                                        class="w-full h-full object-cover object-top"
+                                        loading="lazy"
+                                    />
+                                </div>
+                            </div>
+                            <div class={`absolute -top-3 -right-3 w-12 h-12 rounded-full bg-linear-to-br ${
+                                step.color === 'blue'
+                                    ? 'from-blue-500 to-blue-600'
+                                    : 'from-orange-500 to-orange-600'
+                            } flex items-center justify-center text-white font-bold shadow-lg`}>
+                                {index + 1}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+        <div class="mt-20 text-center">
+            <div class="bg-linear-to-br from-blue-500/10 to-orange-500/10 dark:from-blue-600/10 dark:to-orange-600/10 rounded-3xl p-8 sm:p-10 border border-gray-200 dark:border-gray-700 max-w-3xl mx-auto">
+                <Icon name="tabler-check" class="w-16 h-16 mx-auto mb-4 text-green-600 dark:text-green-400" />
+                
+                <h3 class="text-2xl sm:text-3xl font-titles font-bold text-gray-900 dark:text-white mb-3">
+                    Ready to Install?
+                </h3>
+                
+                <p class="text-lg font-body text-gray-600 dark:text-gray-300 mb-6">
+                    Download the APK and follow these steps to start managing your finances
+                </p>
+                <a 
+                    href={`${GITHUB_LINKS.RELEASES}/latest`}
+                    download
+                    class="group inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold text-white bg-linear-to-r from-blue-600 to-orange-500 hover:from-blue-700 hover:to-orange-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                >
+                    <Icon name="tabler-download" class="w-6 h-6" />
+                    <span>Download Dialcash APK</span>
+                    <Icon name="right-arrow" class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
