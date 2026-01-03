@@ -9,6 +9,7 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 @plugin "tailwind-scrollbar";
+@plugin "@tailwindcss/typography";
 
 @theme {
     --font-titles: var(--titles);
