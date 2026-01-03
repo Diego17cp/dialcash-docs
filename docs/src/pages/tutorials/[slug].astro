@@ -14,7 +14,7 @@ export const getStaticPaths = async () => {
 
 const { tutorial } = Astro.props;
 const { Content } = await tutorial.render();
-const { title, description, portrait, difficulty, feature, screenshotsKey } = tutorial.data;
+const { title, description, portrait, objectPortrait, difficulty, feature, screenshotsKey } = tutorial.data;
 
 const screenshots = tutorialsScreenshots[screenshotsKey] || [];
 
@@ -63,7 +63,7 @@ import { ScreenshotItem } from "@/features/tutorials";
 				<img
 					src={portrait}
 					alt={title}
-					class="w-full aspect-square object-cover"
+					class={`w-full aspect-10/10 object-cover ${objectPortrait || ""}`}
 					transition:name={`tutorial-${tutorial.slug}`}
 				/>
 				<div class="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />
