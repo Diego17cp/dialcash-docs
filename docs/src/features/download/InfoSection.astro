@@ -1,0 +1,168 @@
+---
+import { GITHUB_LINKS } from "@/constants";
+import { Icon } from "astro-icon/components";
+
+const appInfo = {
+    name: "Dialcash",
+    version: "1.0.0",
+    fileSize: "12 MB",
+    lastUpdate: "September 2025",
+    fileType: "APK",
+    minAndroid: "6.0",
+};
+
+const technicalDetails = [
+    {
+        icon: "tabler-versions",
+        label: "Current Version",
+        value: appInfo.version
+    },
+    {
+        icon: "tabler-file-code",
+        label: "File Type",
+        value: appInfo.fileType
+    },
+    {
+        icon: "tabler-file-settings",
+        label: "File Size",
+        value: appInfo.fileSize
+    },
+    {
+        icon: "tabler-calendar-event",
+        label: "Last Updated",
+        value: appInfo.lastUpdate
+    },
+    {
+        icon: "tabler-brand-android",
+        label: "Minimum Android",
+        value: appInfo.minAndroid
+    },
+];
+
+const features = [
+    {
+        icon: "tabler-shield-check",
+        title: "Verified Safe",
+        description: "Scanned and verified free of malware and viruses"
+    },
+    {
+        icon: "tabler-lock-open",
+        title: "No Permissions Abuse",
+        description: "Only requests necessary permissions for core functionality"
+    },
+    {
+        icon: "tabler-refresh",
+        title: "Regular Updates",
+        description: "Continuously improved with bug fixes and new features"
+    },
+    {
+        icon: "tabler-code",
+        title: "Open Source",
+        description: "Transparent development available on GitHub"
+    }
+];
+---
+
+<section class="relative py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+        <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-8 sm:p-10 border border-gray-200 dark:border-gray-700 shadow-xl mb-12">
+            <div class="flex flex-col lg:flex-row gap-8 items-start">
+                <div class="flex items-center gap-6 lg:border-r border-gray-200 dark:border-gray-700 lg:pr-8">
+                    <div class="shrink-0 w-20 h-20 rounded-2xl bg-linear-to-br from-blue-600 to-accent flex items-center justify-center shadow-lg">
+                        <Icon name="tabler-wallet" class="w-10 h-10 text-white" />
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-titles font-bold text-gray-900 dark:text-white mb-1">
+                            {appInfo.name}
+                        </h2>
+                        <p class="text-sm font-body text-gray-600 dark:text-gray-400">
+                            Expense Tracker for Android
+                        </p>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <div class="flex flex-wrap items-center gap-3 text-sm">
+                        <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full font-semibold">
+                            <Icon name="tabler-versions" class="w-4 h-4" />
+                            Version {appInfo.version}
+                        </span>
+                        <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 rounded-full font-semibold">
+                            <Icon name="tabler-file-code" class="w-4 h-4" />
+                            {appInfo.fileType}
+                        </span>
+                        <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 rounded-full font-semibold">
+                            <Icon name="tabler-file-settings" class="w-4 h-4" />
+                            {appInfo.fileSize}
+                        </span>
+                        <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full font-semibold">
+                            <Icon name="tabler-calendar-event" class="w-4 h-4" />
+                            Updated {appInfo.lastUpdate}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-12">
+            <h3 class="text-2xl font-titles font-bold text-gray-900 dark:text-white mb-6 text-center">
+                Technical Details
+            </h3>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {technicalDetails.map((detail) => (
+                    <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-lg">
+                        <div class="flex items-center gap-4">
+                            <div class="shrink-0 w-12 h-12 rounded-xl bg-linear-to-br from-blue-500 to-orange-500 dark:from-blue-600 dark:to-accent flex items-center justify-center shadow-md">
+                                <Icon name={detail.icon} class="w-6 h-6 text-white" />
+                            </div>
+                            <div>
+                                <p class="text-xs font-body text-gray-500 dark:text-gray-400 mb-0.5">
+                                    {detail.label}
+                                </p>
+                                <p class="text-lg font-titles font-bold text-gray-900 dark:text-white">
+                                    {detail.value}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+        <div>
+            <h3 class="text-2xl font-titles font-bold text-gray-900 dark:text-white mb-6 text-center">
+                Why You Can Trust This Download
+            </h3>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {features.map((feature) => (
+                    <div class="group relative">
+                        <div class="absolute inset-0 bg-linear-to-br from-blue-500/20 to-orange-500/20 dark:from-blue-600/20 dark:to-accent/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-lg h-full">
+                            <div class="w-12 h-12 mb-4 rounded-xl bg-linear-to-br from-blue-500 to-orange-500 dark:from-blue-600 dark:to-accent flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <Icon name={feature.icon} class="w-6 h-6 text-white" />
+                            </div>
+                            <h4 class="text-lg font-titles font-bold text-gray-900 dark:text-white mb-2">
+                                {feature.title}
+                            </h4>
+                            <p class="text-sm font-body text-gray-600 dark:text-gray-300 leading-relaxed">
+                                {feature.description}
+                            </p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+        <div class="mt-12 text-center">
+            <p class="text-lg font-body text-gray-600 dark:text-gray-300 mb-6">
+                Ready to start tracking your expenses?
+            </p>
+            <a 
+                href={`${GITHUB_LINKS.RELEASES}/latest`}
+                rel="noopener noreferrer"
+                target="_blank"
+                class="group inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold text-white bg-linear-to-r from-blue-600 to-accent hover:from-blue-700 hover:to-accent/80 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            >
+                <Icon name="tabler-download" class="w-6 h-6" />
+                <span>Download Dialcash APK</span>
+                <Icon name="right-arrow" class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+        </div>
+    </div>
+</section>
