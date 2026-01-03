@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import type { NavConfig } from "@/config";
-import { GITHUB_LINKS, PROJECT } from "@/constants";
+import { GITHUB_LINKS, OWNER_RESOURCES, PROJECT } from "@/constants";
 
 interface Props {
     navConfig: NavConfig;
@@ -107,7 +107,7 @@ const { navConfig } = Astro.props;
                     />
                 </a>
                 <a
-                    href={GITHUB_LINKS.OWNER}
+                    href={`mailto:${OWNER_RESOURCES.EMAIL}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     class="flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-all duration-200 group"
