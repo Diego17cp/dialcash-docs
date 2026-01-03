@@ -1,0 +1,1 @@
+export { default as ScreenshotItem } from './ScreenshotItem.astro';
