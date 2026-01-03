@@ -1,0 +1,116 @@
+---
+import { Icon } from "astro-icon/components";
+
+const helpOptions = [
+    {
+        icon: "tabler-book",
+        title: "User Guide",
+        description: "Learn how to use Dialcash effectively with our comprehensive guides and tutorials",
+        link: "/guide",
+        color: "blue",
+        badge: "Recommended"
+    },
+    {
+        icon: "tabler-message-question",
+        title: "Frequently Asked Questions",
+        description: "Quick answers to the most common questions about Dialcash features and usage",
+        link: "/faq",
+        color: "orange",
+        badge: "Popular"
+    },
+    {
+        icon: "tabler-download",
+        title: "Download & Installation",
+        description: "Step-by-step help for downloading and installing Dialcash on your Android device",
+        link: "/download",
+        color: "green",
+        badge: null
+    },
+    {
+        icon: "tabler-tools",
+        title: "Technical Support",
+        description: "Report bugs, technical issues, or get help with specific problems",
+        link: "#contact",
+        color: "purple",
+        badge: null
+    }
+];
+---
+
+<section id="quick-help" class="relative py-20 px-4 sm:px-6 lg:px-8 scroll-mt-20">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full text-sm font-semibold mb-4">
+                Quick Access
+            </span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-titles font-bold text-gray-900 dark:text-white mb-6">
+                How Can We
+                <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-orange-500 dark:from-blue-400 dark:to-orange-400">
+                    Help You?
+                </span>
+            </h2>
+            <p class="text-lg sm:text-xl font-body text-gray-600 dark:text-gray-300">
+                Choose the type of assistance you need and we'll guide you to the right resources
+            </p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-6">
+            {helpOptions.map((option) => (
+                <a 
+                    href={option.link}
+                    class="group relative block"
+                >
+                    <div class={`absolute inset-0 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
+                        option.color === 'blue' ? 'bg-blue-500/20 dark:bg-blue-600/20' :
+                        option.color === 'orange' ? 'bg-orange-500/20 dark:bg-orange-600/20' :
+                        option.color === 'green' ? 'bg-green-500/20 dark:bg-green-600/20' :
+                        'bg-purple-500/20 dark:bg-purple-600/20'
+                    }`}></div>
+                    <div class="relative h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-2xl group-hover:scale-105">
+                        {option.badge && (
+                            <div class="absolute top-6 right-6">
+                                <span class={`px-3 py-1 text-xs font-semibold rounded-full ${
+                                    option.badge === 'Recommended' 
+                                        ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'
+                                        : 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400'
+                                }`}>
+                                    {option.badge}
+                                </span>
+                            </div>
+                        )}
+                        <div class="mb-6">
+                            <div class={`inline-flex items-center justify-center w-16 h-16 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 ${
+                                option.color === 'blue' ? 'bg-linear-to-br from-blue-500 to-blue-600' :
+                                option.color === 'orange' ? 'bg-linear-to-br from-orange-500 to-orange-600' :
+                                option.color === 'green' ? 'bg-linear-to-br from-green-500 to-green-600' :
+                                'bg-linear-to-br from-purple-500 to-purple-600'
+                            }`}>
+                                <Icon name={option.icon} class="w-8 h-8 text-white" />
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-titles font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            {option.title}
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 font-body leading-relaxed mb-4">
+                            {option.description}
+                        </p>
+                        <div class="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold text-sm">
+                            <span>Learn more</span>
+                            <Icon name="right-arrow" class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                    </div>
+                </a>
+            ))}
+        </div>
+        <div class="mt-12 text-center">
+            <div class="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-br from-blue-50 to-orange-50 dark:from-blue-900/10 dark:to-orange-900/10 rounded-full border border-blue-200 dark:border-blue-700/50">
+                <Icon name="tabler-info-circle" class="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                <p class="text-sm font-body text-gray-700 dark:text-gray-300">
+                    Can't find what you're looking for? 
+                    <a href="#contact" class="font-semibold text-blue-600 dark:text-blue-400 hover:underline ml-1">
+                        Contact our support team
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
