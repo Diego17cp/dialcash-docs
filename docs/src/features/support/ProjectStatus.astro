@@ -1,0 +1,123 @@
+---
+import { GITHUB_LINKS } from "@/constants";
+import { Icon } from "astro-icon/components";
+
+const projectStatus = [
+    {
+        icon: "tabler-code",
+        title: "Active Development",
+        description: "Dialcash is continuously being improved with new features, bug fixes, and optimizations based on user feedback."
+    },
+    {
+        icon: "account-group",
+        title: "Community-Driven",
+        description: "Your feedback and suggestions play a crucial role in shaping the future of Dialcash and prioritizing features."
+    },
+    {
+        icon: "tabler-refresh",
+        title: "Regular Updates",
+        description: "We release updates periodically to enhance functionality, improve performance, and address user-reported issues."
+    },
+    {
+        icon: "tabler-alert-circle",
+        title: "Evolving Features",
+        description: "Some features may change or improve over time as we learn from user experiences and technical possibilities."
+    }
+];
+---
+
+<section class="relative py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-b from-transparent to-gray-50/50 dark:to-gray-900/50">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-block px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-sm font-semibold mb-4">
+                Transparency
+            </span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-titles font-bold text-gray-900 dark:text-white mb-6">
+                Project
+                <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-orange-500 dark:from-blue-400 dark:to-accent">
+                    Status
+                </span>
+            </h2>
+            <p class="text-lg sm:text-xl font-body text-gray-600 dark:text-gray-300">
+                We believe in being transparent about where Dialcash is and where it's heading
+            </p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-6 mb-12">
+            {projectStatus.map((status) => (
+                <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-lg">
+                    <div class="flex items-start gap-4">
+                        <div class="shrink-0 w-12 h-12 rounded-xl bg-linear-to-br from-blue-500 to-orange-500 dark:from-blue-600 dark:to-accent flex items-center justify-center shadow-lg">
+                            <Icon name={status.icon} class="w-6 h-6 text-white" />
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-titles font-bold text-gray-900 dark:text-white mb-2">
+                                {status.title}
+                            </h3>
+                            <p class="text-sm font-body text-gray-600 dark:text-gray-300 leading-relaxed">
+                                {status.description}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+        <div class="bg-linear-to-br from-blue-50 to-orange-50 dark:from-blue-900/10 dark:to-orange-900/10 rounded-3xl p-8 sm:p-10 border border-blue-200 dark:border-blue-700/50 max-w-4xl mx-auto mb-12">
+            <div class="flex items-start gap-4 mb-6">
+                <div class="shrink-0 w-14 h-14 rounded-xl bg-linear-to-br from-blue-500 to-orange-500 flex items-center justify-center shadow-lg">
+                    <Icon name="heart" class="w-7 h-7 text-white" />
+                </div>
+                <div>
+                    <h3 class="text-2xl font-titles font-bold text-gray-900 dark:text-white mb-3">
+                        Built with Care, Improved with Feedback
+                    </h3>
+                    <div class="space-y-3 text-gray-700 dark:text-gray-300 font-body leading-relaxed">
+                        <p>
+                            Dialcash is an <strong class="font-semibold">active project in continuous development</strong>. We're committed to making it better with each update, but we also want to set realistic expectations.
+                        </p>
+                        <p>
+                            Some features may evolve or change as we learn from user experiences and discover better ways to solve problems. This flexibility allows us to adapt and improve based on what users actually need.
+                        </p>
+                        <p>
+                            <strong class="font-semibold">Your feedback is essential</strong> to this process. Whether it's a bug report, feature request, or general suggestion, every piece of feedback helps us understand how to make Dialcash more useful for everyone.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 dark:border-gray-700 max-w-3xl mx-auto">
+            <div class="text-center">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-linear-to-br from-green-500 to-blue-500 flex items-center justify-center shadow-lg">
+                    <Icon name="tabler-send" class="w-8 h-8 text-white" />
+                </div>
+                
+                <h3 class="text-2xl font-titles font-bold text-gray-900 dark:text-white mb-3">
+                    Share Your Thoughts
+                </h3>
+                
+                <p class="text-gray-600 dark:text-gray-300 font-body mb-6">
+                    Have ideas, suggestions, or found a bug? We'd love to hear from you.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a 
+                        href="#contact"
+                        class="inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold text-white bg-linear-to-r from-blue-600 to-orange-500 hover:from-blue-700 hover:to-accent rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                    >
+                        <Icon name="email" class="w-5 h-5" />
+                        <span>Contact Support</span>
+                    </a>
+                    
+                    <a 
+                        href={GITHUB_LINKS.ISSUES}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-full shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 transform hover:scale-105"
+                    >
+                        <Icon name="github" class="w-5 h-5" />
+                        <span>GitHub Issues</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
