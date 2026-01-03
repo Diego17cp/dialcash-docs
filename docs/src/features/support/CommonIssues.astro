@@ -1,0 +1,117 @@
+---
+import { Icon } from "astro-icon/components";
+
+const commonIssues = [
+    {
+        icon: "tabler-alert-circle",
+        problem: "Can't Install the APK",
+        solution: "Make sure you've enabled installation from unknown sources in your Android settings.",
+        link: "/download#how-to-install",
+        linkText: "View installation guide"
+    },
+    {
+        icon: "tabler-shield-x",
+        problem: "Android Shows Security Warnings",
+        solution: "This is normal for apps outside the Play Store. Dialcash is safe and doesn't contain malware.",
+        link: "/download#how-to-install",
+        linkText: "Learn why this happens"
+    },
+    {
+        icon: "tabler-database-off",
+        problem: "Lost Data After Changing Phones",
+        solution: "Data is stored locally on your device. Make sure to backup before switching phones.",
+        link: "/guide#data-backup",
+        linkText: "How to backup data"
+    },
+    {
+        icon: "tabler-app-window",
+        problem: "App Won't Open Correctly",
+        solution: "Try clearing the app cache or reinstalling. If the problem persists, contact us.",
+        link: "#contact",
+        linkText: "Contact support"
+    },
+    {
+        icon: "tabler-refresh-alert",
+        problem: "App Crashes or Freezes",
+        solution: "Update to the latest version or clear app data. Report persistent issues to our support team.",
+        link: "#contact",
+        linkText: "Report a bug"
+    },
+    {
+        icon: "tabler-file-alert",
+        problem: "Transactions Not Saving",
+        solution: "Check your device's available storage. If storage is full, free up some space and try again.",
+        link: "/faq",
+        linkText: "View FAQ"
+    }
+];
+---
+
+<section class="relative py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-b from-transparent to-gray-50/50 dark:to-gray-900/50">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-block px-4 py-2 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-full text-sm font-semibold mb-4">
+                Troubleshooting
+            </span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-titles font-bold text-gray-900 dark:text-white mb-6">
+                Common
+                <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-orange-500 dark:from-blue-400 dark:to-orange-400">
+                    Issues
+                </span>
+            </h2>
+            <p class="text-lg sm:text-xl font-body text-gray-600 dark:text-gray-300">
+                Quick solutions to the most frequent problems users encounter
+            </p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {commonIssues.map((issue) => (
+                <div class="group relative">
+                    <div class="h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-red-300 dark:hover:border-red-600 transition-all duration-300 hover:shadow-lg">
+                        <div class="mb-4">
+                            <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-linear-to-br from-red-500 to-orange-500 dark:from-red-600 dark:to-orange-600 shadow-lg">
+                                <Icon name={issue.icon} class="w-6 h-6 text-white" />
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-titles font-bold text-gray-900 dark:text-white mb-2">
+                            {issue.problem}
+                        </h3>
+                        <p class="text-sm font-body text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                            {issue.solution}
+                        </p>
+                        <a 
+                            href={issue.link}
+                            class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline group-hover:gap-2 transition-all"
+                        >
+                            <span>{issue.linkText}</span>
+                            <Icon name="right-arrow" class="w-4 h-4" />
+                        </a>
+                    </div>
+                </div>
+            ))}
+        </div>
+        <div class="max-w-3xl mx-auto">
+            <div class="bg-linear-to-br from-red-50 to-orange-50 dark:from-red-900/10 dark:to-orange-900/10 rounded-3xl p-8 border border-red-200 dark:border-red-700/50">
+                <div class="flex items-start gap-4">
+                    <div class="shrink-0 w-12 h-12 rounded-xl bg-linear-to-br from-red-500 to-orange-500 flex items-center justify-center shadow-lg">
+                        <Icon name="tabler-help-circle" class="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-titles font-bold text-gray-900 dark:text-white mb-2">
+                            Still Having Issues?
+                        </h3>
+                        <p class="text-gray-700 dark:text-gray-300 font-body leading-relaxed mb-4">
+                            If your problem isn't listed here or the solutions didn't work, don't worry. Our support team is here to help you solve any issue you're experiencing.
+                        </p>
+                        <a 
+                            href="#contact"
+                            class="inline-flex items-center gap-2 px-6 py-3 text-base font-semibold text-white bg-linear-to-r from-red-600 to-orange-500 hover:from-red-700 hover:to-orange-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                        >
+                            <Icon name="email" class="w-5 h-5" />
+                            <span>Contact Support</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
