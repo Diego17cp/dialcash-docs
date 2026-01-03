@@ -63,26 +63,16 @@ import MobileMenu from "./MobileMenu.astro";
 <MobileMenu navConfig={navConfig} />
 
 <script>
-	// Theme Toggle
 	function toggleTheme() {
 		const isDark = document.documentElement.classList.toggle("dark");
 		localStorage.setItem("theme", isDark ? "dark" : "light");
 	}
-
-	const themeToggle = document.getElementById("theme-toggle");
-	const themeToggleMobile = document.getElementById("theme-toggle-mobile");
-
-	themeToggle?.addEventListener("click", toggleTheme);
-	themeToggleMobile?.addEventListener("click", toggleTheme);
-
-	const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
-	const mobileMenuClose = document.getElementById("mobile-menu-close");
-	const mobileMenu = document.getElementById("mobile-menu");
-	const mobileOverlay = document.getElementById("mobile-overlay");
-	const menuIcon = document.querySelector(".menu-icon");
-	const closeIcon = document.querySelector(".close-icon");
-
 	function openMobileMenu() {
+		const mobileMenu = document.getElementById("mobile-menu");
+		const mobileOverlay = document.getElementById("mobile-overlay");
+		const menuIcon = document.querySelector(".menu-icon");
+		const closeIcon = document.querySelector(".close-icon");
+
 		mobileMenu?.classList.remove("-translate-y-full");
 		mobileMenu?.classList.add("translate-y-0");
 		mobileOverlay?.classList.remove("hidden");
@@ -92,6 +82,11 @@ import MobileMenu from "./MobileMenu.astro";
 	}
 
 	function closeMobileMenu() {
+		const mobileMenu = document.getElementById("mobile-menu");
+		const mobileOverlay = document.getElementById("mobile-overlay");
+		const menuIcon = document.querySelector(".menu-icon");
+		const closeIcon = document.querySelector(".close-icon");
+
 		mobileMenu?.classList.add("-translate-y-full");
 		mobileMenu?.classList.remove("translate-y-0");
 		mobileOverlay?.classList.add("hidden");
@@ -100,32 +95,46 @@ import MobileMenu from "./MobileMenu.astro";
 		document.body.style.overflow = "";
 	}
 
-	mobileMenuToggle?.addEventListener("click", () => {
-		if (mobileMenu?.classList.contains("-translate-y-full")) {
-			openMobileMenu();
-		} else {
-			closeMobileMenu();
-		}
-	});
+	function attachEventListeners() {
+		const themeToggle = document.getElementById("theme-toggle");
+		const themeToggleMobile = document.getElementById("theme-toggle-mobile");
 
-	mobileMenuClose?.addEventListener("click", closeMobileMenu);
-	mobileOverlay?.addEventListener("click", closeMobileMenu);
+		themeToggle?.addEventListener("click", toggleTheme);
+		themeToggleMobile?.addEventListener("click", toggleTheme);
 
-	const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
-	mobileNavLinks.forEach((link) => {
-		link.addEventListener("click", closeMobileMenu);
-	});
+		const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+		const mobileOverlay = document.getElementById("mobile-overlay");
+		const mobileMenu = document.getElementById("mobile-menu");
 
-	const currentPath = window.location.pathname;
-	const navLinks = document.querySelectorAll(".nav-link");
-	navLinks.forEach((link) => {
-		if (link.getAttribute("href") === currentPath) {
-			link.classList.add(
+		mobileMenuToggle?.addEventListener("click", () => {
+			if (mobileMenu?.classList.contains("-translate-y-full")) openMobileMenu();
+			else closeMobileMenu();
+		});
+
+		mobileOverlay?.addEventListener("click", closeMobileMenu);
+
+		const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+		mobileNavLinks.forEach(link => link.addEventListener("click", closeMobileMenu));
+
+		const currentPath = window.location.pathname;
+		const navLinks = document.querySelectorAll(".nav-link");
+		navLinks.forEach((link) => {
+			link.classList.remove(
 				"bg-gradient-to-tr",
 				"from-blue-400/10",
 				"to-orange-500/50",
 				"shadow-sm"
 			);
-		}
-	});
+			if (link.getAttribute("href") === currentPath) {
+				link.classList.add(
+					"bg-gradient-to-tr",
+					"from-blue-400/10",
+					"to-orange-500/50",
+					"shadow-sm"
+				);
+			}
+		});
+	}
+	attachEventListeners();
+	document.addEventListener("astro:after-swap", attachEventListeners);
 </script>
