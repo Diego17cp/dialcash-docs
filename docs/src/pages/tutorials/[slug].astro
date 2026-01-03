@@ -1,0 +1,145 @@
+---
+import { getCollection } from "astro:content";
+import { LandingLayout } from "@/layouts";
+import { Icon } from "astro-icon/components";
+import { tutorialsScreenshots } from "@/features/tutorials/screenshots";
+
+export const getStaticPaths = async () => {
+	const tutorials = await getCollection("tutorials");
+	return tutorials.map((tutorial) => ({
+		params: { slug: tutorial.slug },
+		props: { tutorial },
+	}));
+};
+
+const { tutorial } = Astro.props;
+const { Content } = await tutorial.render();
+const { title, description, portrait, difficulty, feature, screenshotsKey } = tutorial.data;
+
+const screenshots = tutorialsScreenshots[screenshotsKey] || [];
+
+import { getDifficultyClass, getFeatureIcon } from "@/features/tutorials/utils";
+import { ContentRenderer } from "@/ui";
+import { ScreenshotItem } from "@/features/tutorials";
+---
+
+<LandingLayout title={`${title} - Dialcash Tutorial`} description={description}>
+	<article class="relative py-20 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto">
+			<a
+				href="/tutorials"
+				class="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-8 group"
+			>
+				<Icon
+					name="tabler-arrow-left"
+					class="w-5 h-5 group-hover:-translate-x-1 transition-transform"
+				/>
+				<span class="font-semibold">Back to Tutorials</span>
+			</a>
+			<header class="mb-12">
+				<div class="flex flex-wrap items-center gap-3 mb-6">
+					<span
+						class={`px-3 py-1 text-sm font-semibold rounded-full capitalize ${getDifficultyClass(difficulty)} backdrop-blur-sm`}
+					>
+						{difficulty}
+					</span>
+					<span
+						class="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-semibold rounded-full capitalize"
+					>
+						<Icon name={getFeatureIcon(feature)} class="w-4 h-4" />
+						{feature}
+					</span>
+				</div>
+				<h1
+					class="text-4xl sm:text-5xl lg:text-6xl font-titles font-bold text-gray-900 dark:text-white mb-6"
+				>
+					{title}
+				</h1>
+				<p class="text-xl font-body text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {description}
+				</p>
+			</header>
+			<div class="relative mb-12 rounded-3xl overflow-hidden shadow-2xl">
+				<img
+					src={portrait}
+					alt={title}
+					class="w-full aspect-square object-cover"
+					transition:name={`tutorial-${tutorial.slug}`}
+				/>
+				<div class="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />
+			</div>
+			<ContentRenderer>
+				<Content />
+			</ContentRenderer>
+			{
+				screenshots.length > 0 && (
+					<section class="mb-16">
+						<div class="bg-linear-to-br from-blue-50 to-orange-50 dark:from-blue-900/10 dark:to-orange-900/10 rounded-3xl p-8 sm:p-10 border border-blue-200 dark:border-blue-700/50">
+							<h2 class="text-2xl sm:text-3xl font-titles font-bold text-gray-900 dark:text-white mb-8 text-center">
+								Visual Guide
+							</h2>
+							<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+								{screenshots.map((screenshot, index) => (
+									<ScreenshotItem
+										screenshot={screenshot}
+										index={index}
+									/>
+								))}
+							</div>
+						</div>
+					</section>
+				)
+			}
+			<nav
+				class="flex flex-col sm:flex-row gap-4 pt-12 border-t border-gray-200 dark:border-gray-700"
+			>
+				<a
+					href="/tutorials"
+					class="flex-1 group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-lg"
+				>
+					<div class="flex items-center gap-3">
+						<div
+							class="w-10 h-10 rounded-lg bg-linear-to-br from-blue-500 to-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform"
+						>
+							<Icon
+								name="tabler-arrow-left"
+								class="w-5 h-5 text-white"
+							/>
+						</div>
+						<div>
+							<p class="text-sm font-body text-gray-500 dark:text-gray-400">
+								Back to
+							</p>
+							<p class="font-semibold text-gray-900 dark:text-white font-titles">
+								All Tutorials
+							</p>
+						</div>
+					</div>
+				</a>
+				<a
+					href="/support"
+					class="flex-1 group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-600 transition-all duration-300 hover:shadow-lg"
+				>
+					<div class="flex items-center gap-3">
+						<div
+							class="w-10 h-10 rounded-lg bg-linear-to-br from-orange-500 to-orange-600 flex items-center justify-center group-hover:scale-110 transition-transform"
+						>
+							<Icon
+								name="tabler-help-circle"
+								class="w-5 h-5 text-white"
+							/>
+						</div>
+						<div>
+							<p class="text-sm font-body text-gray-500 dark:text-gray-400">
+								Need help?
+							</p>
+							<p class="font-semibold text-gray-900 dark:text-white font-titles">
+								Get Support
+							</p>
+						</div>
+					</div>
+				</a>
+			</nav>
+		</div>
+	</article>
+</LandingLayout>
