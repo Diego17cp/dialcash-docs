@@ -58,36 +58,38 @@ const responseInfo = [
                 Have a question or need help? We're here to assist you with any issues or inquiries
             </p>
         </div>
-        <div class="grid md:grid-cols-2 gap-6 mb-12">
+        <div class="grid sm:grid-cols-2 gap-6 mb-12">
             {contactMethods.map((method) => (
                 <div class="group relative">
                     <div class={`absolute inset-0 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
                         method.color === 'blue' ? 'bg-blue-500/20 dark:bg-blue-600/20' : 'bg-gray-500/20 dark:bg-gray-600/20'
                     }`}></div>
-                    <div class="relative h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-xl">
+                    <div class="relative h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-xl">
                         <div class="mb-6">
-                            <div class={`inline-flex items-center justify-center w-16 h-16 rounded-2xl shadow-lg ${
+                            <div class={`inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl shadow-lg ${
                                 method.color === 'blue' 
                                     ? 'bg-linear-to-br from-blue-500 to-blue-600'
                                     : 'bg-linear-to-br from-gray-700 to-gray-800'
                             }`}>
-                                <Icon name={method.icon} class="w-8 h-8 text-white" />
+                                <Icon name={method.icon} class="w-7 h-7 sm:w-8 sm:h-8 text-white" />
                             </div>
                         </div>
-                        <h3 class="text-2xl font-titles font-bold text-gray-900 dark:text-white mb-2">
+                        <h3 class="text-xl sm:text-2xl font-titles font-bold text-gray-900 dark:text-white mb-3">
                             {method.title}
                         </h3>
-                        <div class="mb-4">
-                            <code class="inline-block px-4 py-2 bg-gray-100 dark:bg-gray-900/50 text-blue-600 dark:text-blue-400 rounded-lg text-sm font-mono">
+                        <div class="mb-4 overflow-hidden">
+                            <code class="inline-block px-3 py-2 bg-gray-100 dark:bg-gray-900/50 text-blue-600 dark:text-blue-400 rounded-lg text-xs sm:text-sm font-mono break-all">
                                 {method.value}
                             </code>
                         </div>
-                        <p class="text-gray-600 dark:text-gray-300 font-body leading-relaxed mb-6">
+                        <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 font-body leading-relaxed mb-6">
                             {method.description}
                         </p>
                         <a 
                             href={method.action}
-                            class={`inline-flex items-center gap-2 px-6 py-3 text-base font-semibold text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 ${
+                            target={method.color === 'gray' ? '_blank' : undefined}
+                            rel={method.color === 'gray' ? 'noopener noreferrer' : undefined}
+                            class={`inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 text-sm sm:text-base font-semibold text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 ${
                                 method.color === 'blue'
                                     ? 'bg-linear-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800'
                                     : 'bg-linear-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900'
@@ -100,18 +102,17 @@ const responseInfo = [
                 </div>
             ))}
         </div>
-        <div class="bg-linear-to-br from-blue-50 to-orange-50 dark:from-blue-900/10 dark:to-orange-900/10 rounded-3xl p-8 border border-blue-200 dark:border-blue-700/50 mb-12">
-            <h3 class="text-xl font-titles font-bold text-gray-900 dark:text-white mb-6 text-center">
+        <div class="bg-linear-to-br from-blue-50 to-orange-50 dark:from-blue-900/10 dark:to-orange-900/10 rounded-3xl p-6 sm:p-8 border border-blue-200 dark:border-blue-700/50 mb-12">
+            <h3 class="text-lg sm:text-xl font-titles font-bold text-gray-900 dark:text-white mb-6 text-center">
                 What to Expect
             </h3>
-            
             <div class="grid sm:grid-cols-3 gap-6">
                 {responseInfo.map((info) => (
                     <div class="flex items-start gap-3">
                         <div class="shrink-0 w-10 h-10 rounded-lg bg-linear-to-br from-blue-500 to-orange-500 flex items-center justify-center">
                             <Icon name={info.icon} class="w-5 h-5 text-white" />
                         </div>
-                        <div>
+                        <div class="min-w-0">
                             <h4 class="font-semibold text-gray-900 dark:text-white font-titles mb-1">
                                 {info.title}
                             </h4>
@@ -126,7 +127,7 @@ const responseInfo = [
         <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 max-w-3xl mx-auto">
             <div class="flex items-start gap-3">
                 <Icon name="tabler-info-circle" class="shrink-0 w-6 h-6 text-blue-600 dark:text-blue-400 mt-0.5" />
-                <div>
+                <div class="min-w-0">
                     <h4 class="font-semibold text-gray-900 dark:text-white font-titles mb-2">
                         Please Note
                     </h4>
