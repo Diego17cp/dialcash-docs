@@ -43,4 +43,5 @@ const postsCollection = defineCollection({
 export const collections = {
     faq: faqCollection,
     tutorials: tutorialsCollection,
+    posts: postsCollection,
 };
