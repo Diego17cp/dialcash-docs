@@ -28,6 +28,18 @@ const tutorialsCollection = defineCollection({
     })
 })
 
+const postsCollection = defineCollection({
+    type: "content",
+    schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        publishedAt: z.coerce.date(),
+        category: z.string(),
+        portrait: z.string(),
+        order: z.number().optional(),
+    })
+})
+
 export const collections = {
     faq: faqCollection,
     tutorials: tutorialsCollection,
