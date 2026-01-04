@@ -1,0 +1,102 @@
+---
+import { getCollection } from "astro:content";
+import { LandingLayout } from "@/layouts";
+import { Icon } from "astro-icon/components";
+import { ContentRenderer } from "@/ui";
+import { getCategoryIcon, getCategoryClass, formatDate } from "@/features/blog/utils";
+
+export const getStaticPaths = async () => {
+    const posts = await getCollection("posts");
+    return posts.map((post) => ({
+        params: { slug: post.slug },
+        props: { post },
+    }));
+};
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const { title, description, portrait, category, publishedAt } = post.data;
+
+---
+
+<LandingLayout
+    title={`${title} - Dialcash Blog`}
+    description={description}
+>
+    <article class="relative py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <a 
+                href="/blog"
+                class="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-8 group"
+            >
+                <Icon
+                    name="tabler-arrow-left"
+                    class="w-5 h-5 group-hover:-translate-x-1 transition-transform"
+                />
+                <span class="font-semibold">Back to Blog</span>
+            </a>
+            <header class="mb-12">
+                <div class="flex flex-wrap items-center gap-3 mb-6">
+                    <span class={`inline-flex items-center gap-1.5 px-3 py-1 text-sm font-semibold rounded-full capitalize ${getCategoryClass(category)}`}>
+                        <Icon name={getCategoryIcon(category)} class="w-4 h-4" />
+                        {category}
+                    </span>
+                    <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                        <Icon name="tabler-calendar-event" class="w-4 h-4" />
+                        <time datetime={publishedAt.toISOString()}>
+                            {formatDate(publishedAt)}
+                        </time>
+                    </div>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-titles font-bold text-gray-900 dark:text-white mb-6">
+                    {title}
+                </h1>
+                <p class="text-xl font-body text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {description}
+                </p>
+            </header>
+            <div class="relative mb-12 rounded-3xl overflow-hidden shadow-2xl">
+                <img
+                    src={portrait}
+                    alt={title}
+                    class="w-full aspect-video object-cover"
+                    transition:name={`post-${post.slug}`}
+                />
+                <div class="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent"></div>
+            </div>
+            <ContentRenderer>
+                <Content />
+            </ContentRenderer>
+            <nav class="flex flex-col sm:flex-row gap-4 pt-12 border-t border-gray-200 dark:border-gray-700 mt-16">
+                <a 
+                    href="/blog"
+                    class="flex-1 group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-lg"
+                >
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-linear-to-br from-blue-500 to-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <Icon name="tabler-arrow-left" class="w-5 h-5 text-white" />
+                        </div>
+                        <div>
+                            <p class="text-sm font-body text-gray-500 dark:text-gray-400">Back to</p>
+                            <p class="font-semibold text-gray-900 dark:text-white font-titles">All Posts</p>
+                        </div>
+                    </div>
+                </a>
+                <a 
+                    href="/support"
+                    class="flex-1 group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-600 transition-all duration-300 hover:shadow-lg"
+                >
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-linear-to-br from-orange-500 to-orange-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <Icon name="tabler-help-circle" class="w-5 h-5 text-white" />
+                        </div>
+                        <div>
+                            <p class="text-sm font-body text-gray-500 dark:text-gray-400">Need help?</p>
+                            <p class="font-semibold text-gray-900 dark:text-white font-titles">Get Support</p>
+                        </div>
+                    </div>
+                </a>
+            </nav>
+        </div>
+    </article>
+</LandingLayout>
