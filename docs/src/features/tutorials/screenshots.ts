@@ -22,6 +22,9 @@ import savingData from "@/assets/screenshots/saving-data.webp";
 import importData from "@/assets/screenshots/import-data.webp";
 import restoringData from "@/assets/screenshots/restoring-data.webp";
 
+import creatingIncomeGroup from "@/assets/screenshots/creating-income-group.webp";
+import viewingIncomeGroupDetails from "@/assets/screenshots/income-group-item.webp";
+
 export const tutorialsScreenshots: Record<
 	string,
 	{ src: string; alt: string }[]
@@ -104,6 +107,16 @@ export const tutorialsScreenshots: Record<
         {
             src: restoringData.src,
             alt: "Restoring data from a backup file",
+        }
+    ],
+    "income-groups": [
+        {
+            src: creatingIncomeGroup.src,
+            alt: "Creating a new income group",
+        },
+        {
+            src: viewingIncomeGroupDetails.src,
+            alt: "Viewing income group details",
         }
     ]
 };
