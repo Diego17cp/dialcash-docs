@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import type { NavConfig } from "@/config";
 import { GITHUB_LINKS, OWNER_RESOURCES, PROJECT } from "@/constants";
+import { LATEST_VERSION } from "@/constants/version";
 
 interface Props {
     navConfig: NavConfig;
@@ -151,7 +152,7 @@ const { navConfig } = Astro.props;
                     </a>
                 </div>
                 <div class="text-xs text-gray-400 dark:text-gray-500">
-                    Version {PROJECT.VERSION} • MIT License
+                    Version {LATEST_VERSION} • MIT License
                 </div>
             </div>
         </div>

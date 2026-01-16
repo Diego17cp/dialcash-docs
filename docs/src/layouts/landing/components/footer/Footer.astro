@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import logo from "@/assets/brand/light-logo.webp";
 import { GITHUB_LINKS, OWNER_RESOURCES, PROJECT } from "@/constants";
+import { LATEST_VERSION } from "@/constants/version";
 ---
 
 <footer
@@ -262,7 +263,7 @@ import { GITHUB_LINKS, OWNER_RESOURCES, PROJECT } from "@/constants";
 					<span
 						class="px-2 py-1 bg-gray-800 rounded text-xs font-mono"
 					>
-						v{PROJECT.VERSION}
+						v{LATEST_VERSION}
 					</span>
 					<span class="text-gray-600">•</span>
 					<a

@@ -2,6 +2,8 @@
 const { title = "Dialcash - Manage your accounts, finances, transactions, in one place", description = "Manage your accounts, finances, and transactions all in one place with Dialcash." } = Astro.props;
 import "@/styles/global.css";
 import { ClientRouter } from "astro:transitions";
+
+import { LATEST_VERSION } from "@/constants/version";
 ---
 
 <!doctype html>
@@ -30,6 +32,7 @@ import { ClientRouter } from "astro:transitions";
                     document.documentElement.classList.remove("dark");
                 }
             }
+            window.DIALCASH_VERSION = "${LATEST_VERSION}";
             applyTheme();
             document.addEventListener('astro:after-swap', applyTheme);
         </script>

@@ -1,12 +1,14 @@
 ---
 import { GITHUB_LINKS } from "@/constants";
 import { Icon } from "astro-icon/components";
+import { LATEST_VERSION, PUBLISHED_AT } from "@/constants/version";
+import { formatDate } from "./utils/formatDate";
 
 const appInfo = {
     name: "Dialcash",
-    version: "1.0.0",
+    version: LATEST_VERSION,
     fileSize: "12 MB",
-    lastUpdate: "September 2025",
+    lastUpdate: formatDate(PUBLISHED_AT),
     fileType: "APK",
     minAndroid: "6.0",
 };
