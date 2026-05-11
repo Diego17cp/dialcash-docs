@@ -25,6 +25,8 @@ import restoringData from "@/assets/screenshots/restoring-data.webp";
 import creatingIncomeGroup from "@/assets/screenshots/creating-income-group.webp";
 import viewingIncomeGroupDetails from "@/assets/screenshots/income-group-item.webp";
 
+import checkingBudgetByDate from "@/assets/screenshots/checking-budget-by-date.webp";
+
 export const tutorialsScreenshots: Record<
 	string,
 	{ src: string; alt: string }[]
@@ -117,6 +119,12 @@ export const tutorialsScreenshots: Record<
         {
             src: viewingIncomeGroupDetails.src,
             alt: "Viewing income group details",
+        }
+    ],
+    "checking-budget-by-date": [
+        {
+            src: checkingBudgetByDate.src,
+            alt: "Select an account and date to check the budget for that specific day",
         }
     ]
 };
